@@ -1,0 +1,466 @@
+/* Font */
+@font-face {
+  font-family: "Work Sans";
+  src: url("../font/Work_Sans/WorkSans-VariableFont_wght.ttf");
+}
+
+/* Variables */
+:root {
+  --main-color: #1fe374;
+  --accent: #00ad6a;
+  --section-bg-1: #eafaf1;
+  --section-bg-2: #fcfcfc;
+  --main-text-clr: #080c16;
+  --transition-time: 0.3s;
+  --container-width: 80%;
+  --button-gradient: linear-gradient(
+    to right,
+    var(--main-color),
+    var(--accent)
+  );
+  --inbetween-section-sapce: 30px 0;
+}
+
+@media (width < 767px) {
+  :root {
+    --container-width: 90%;
+  }
+}
+
+/* General */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Work Sans", Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+  display: inline-block;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  line-height: 1.6;
+}
+
+button {
+  border: 2px solid var(--main-color);
+  outline: none;
+  padding: 10px 14px;
+  margin: 15px auto;
+  text-transform: capitalize;
+  color: var(--main-color);
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  display: block;
+}
+
+button:hover {
+  box-shadow: -5px 5px 0 0 var(--accent);
+}
+
+button.alternate {
+  background-color: var(--main-color);
+  color: var(--main-text-clr);
+  border: none;
+}
+
+.container {
+  width: var(--container-width);
+  margin: 0 auto;
+}
+
+/* ======================= Header Start ======================= */
+
+header {
+  background-color: var(--section-bg-1);
+}
+
+/* Nav */
+nav {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav h1 {
+  font-size: 2rem;
+  color: var(--main-color);
+  text-transform: uppercase;
+}
+
+nav .links {
+  display: flex;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 16px;
+}
+
+nav ul li a {
+  padding: 0 15px;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 700;
+  transition: var(--transition-time);
+}
+
+nav ul li:not(.current) a {
+  color: var(--main-color);
+}
+
+nav ul li:not(.current):hover a {
+  color: var(--main-text-clr);
+}
+.mobile-menu {
+  display: none;
+}
+
+@media (width < 767px) {
+  nav .links {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    z-index: 999;
+  }
+
+  .mobile-menu span {
+    display: block;
+    width: 25px;
+    margin: 5px 0;
+    height: 3px;
+    background-color: var(--main-color);
+    transition: var(--transition-time);
+  }
+
+  .mobile-menu .menu {
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 90px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top;
+    width: 50%;
+    height: 250px;
+    box-shadow: 0 3px 10px 0 rgb(8, 12, 22, 0.16);
+    padding: 20px 10px;
+    transition: var(--transition-time);
+  }
+
+  .mobile-menu:hover span:first-child {
+    transform: rotate(45deg) translate(5px, 15px);
+  }
+
+  .mobile-menu:hover span:nth-child(2) {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+
+  .mobile-menu:hover span:last-of-type {
+    transform: rotate(-45deg) translate(-4px, -7px);
+  }
+
+  .mobile-menu:hover .menu {
+    transform: translateX(-50%) scaleY(1);
+  }
+  .mobile-menu .menu ul {
+    text-align: center;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .mobile-menu .menu ul li a {
+    font-size: 1rem;
+  }
+}
+
+/* Intro */
+.intro {
+  padding: var(--inbetween-section-sapce);
+}
+
+.intro .intro-text {
+  text-align: center;
+  width: 500px;
+  max-width: fit-content; /* I don't unserstand -for now- what I have done here, but it works */
+  margin: 0 auto;
+}
+
+.intro .intro-text h1 {
+  font-size: 2.5rem;
+}
+
+.intro .intro-text p {
+  margin: 10px 0;
+}
+
+.intro .intro-pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  min-height: 500px;
+}
+
+/* Regular Pricing */
+.intro .intro-pricing .regular h2 {
+  font-size: 1.25rem;
+  color: var(--accent);
+  margin-right: 30px;
+}
+
+.intro .intro-pricing .regular ul {
+  list-style-type: disc;
+  margin: 16px 0;
+}
+
+.intro .intro-pricing .regular ul li {
+  margin-bottom: 5px;
+}
+
+.intro .intro-pricing .regular a {
+  text-decoration: underline;
+  transition: var(--transition-time);
+}
+
+.intro .intro-pricing .regular a:hover {
+  color: var(--accent);
+}
+
+/* Recommended Pricing */
+.intro .intro-pricing .recomm {
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  background-color: white;
+  border: 1px solid rgb(201, 193, 193);
+}
+
+.intro .intro-pricing .recomm .pricing-header {
+  background-color: var(--accent);
+  padding: 5px;
+  color: white;
+  text-align: center;
+}
+
+.intro .intro-pricing .recomm .pricing-header span {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.intro .intro-pricing .pricing-body {
+  padding: 20px;
+  text-align: center;
+}
+
+.intro .intro-pricing .pricing-body h2 {
+  color: var(--accent);
+  font-size: 3rem;
+  margin-bottom: 5px;
+}
+
+.intro .intro-pricing .pricing-body span {
+  color: rgb(0 0 0 / 0.5);
+  font-size: 1.125rem;
+}
+
+.intro .intro-pricing .pricing-body p {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--main-text-clr);
+  margin-bottom: 10px;
+}
+
+.intro .intro-pricing .pricing-body ul {
+  text-align: left;
+}
+
+.intro .intro-pricing .pricing-body ul li {
+  margin-bottom: 15px;
+  display: flex;
+}
+
+.intro .intro-pricing .pricing-body ul li i {
+  color: var(--main-color);
+  margin-right: 10px;
+}
+
+/* Extra */
+
+.intro .intro-pricing .extra {
+  border: 1px solid rgb(201, 193, 193);
+}
+.intro .intro-pricing .extra .pricing-header {
+  background-color: rgb(243, 243, 243);
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.intro .intro-pricing .extra .pricing-body {
+  background-color: white;
+}
+.intro .intro-pricing .extra h2 {
+  font-weight: normal;
+  font-size: 2rem;
+}
+
+@media (max-width: 767px) {
+  .intro .intro-pricing {
+    flex-direction: column;
+  }
+
+  .intro .intro-pricing .regular {
+    margin: 20px 0;
+  }
+
+  .intro .intro-pricing .recomm {
+    margin-bottom: 20px;
+  }
+
+  .intro .intro-pricing .recomm h2 {
+    font-size: 2.5rem;
+  }
+
+  .intro .intro-pricing .extra h2 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Testimonial */
+
+.intro-testimonial {
+  margin: 40px auto;
+  text-align: center;
+  width: 500px;
+  max-width: fit-content;
+}
+
+.intro-testimonial img {
+  margin: 10px auto;
+}
+
+.intro-testimonial p {
+  margin: 10px 0;
+}
+
+.intro-testimonial span {
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+/* ======================= Header End ======================= */
+
+/* ======================= Main Start ======================= */
+
+main {
+  padding: var(--inbetween-section-sapce);
+  background-color: var(--section-bg-2);
+}
+
+main h3 {
+  color: var(--main-text-clr);
+  font-size: 1.75rem;
+  margin-bottom: 20px;
+}
+
+main .questions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, fit-content));
+  gap: 40px;
+}
+
+main .questions h4 {
+  font-size: 1.25rem;
+}
+/* ======================= Main End ======================= */
+
+/* ======================= Footer Start ======================= */
+footer {
+  margin: 20px 0 0;
+  padding: 50px 0;
+  background-color: var(--main-text-clr);
+}
+
+footer .container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, fit-content));
+}
+
+footer .container .logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+footer .container .logo img {
+  width: 200px;
+  max-width: fit-content;
+}
+
+footer .container .logo button {
+  margin: 10px 0;
+  background-color: transparent;
+  background-image: var(--button-gradient);
+  max-width: fit-content;
+}
+
+footer .container .links {
+  color: white;
+}
+
+footer .container .links > ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+footer .container .links > ul > li {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+footer .container .links > ul > li > ul li {
+  font-weight: normal;
+  color: var(--main-color);
+  margin: 20px 0 10px;
+}
+
+footer .container .links > ul > li > ul li a {
+  transition: var(--transition-time);
+}
+
+footer .container .links > ul > li > ul li a:hover {
+  color: white;
+}
+
+footer .copy {
+  color: rgba(214, 218, 229, 0.5);
+  font-size: 12px;
+}
+
+footer .copy a {
+  text-decoration: underline;
+}
+/* ======================= Footer End ======================= */
